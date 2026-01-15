@@ -3,15 +3,14 @@
 
 body {
     background-color: #e6e6e5;
-    cursor: none; /* Hide default cursor */
-    padding: 0 20px; /* Add horizontal padding to prevent grid from filling the whole screen */
+    cursor: none; 
+    padding: 0 20px;
 }
 
-/* Hide native cursor everywhere and selectively restore text cursor for typing fields
-    Using a universal rule ensures no element falls through with its own cursor. */
+
 * { cursor: none !important; }
 
-/* Show text insertion cursor when focus is on input/textarea/select so caret is visible */
+
 input, textarea, select { cursor: text !important; }
 
 /* Custom cursor */
@@ -60,7 +59,7 @@ input, textarea, select { cursor: text !important; }
     transform: rotate(-90deg); /* Makes arrow point left */
 }
 
-/* Theme variables */
+/* Theme */
 :root {
     --bg: #e6e6e5;
     --text: #000;
@@ -77,7 +76,7 @@ body.dark {
     --accent: #fff;
 }
 
-/* theme toggle removed */
+
 
 /* Update common elements to use variables */
 body {
@@ -200,7 +199,7 @@ body {
     opacity: 0.8;
 }
 
-/* Busy/disabled state for submit button */
+
 .modal button[type="submit"][disabled] {
     opacity: 0.7;
     cursor: default;
@@ -240,10 +239,10 @@ h1 {
     font-family: "Lato", sans-serif;
 }
 
-/* Projects grid: responsive columns that fill the container and avoid empty space */
+
 .projects-grid {
     display: grid;
-    /* mobile-first: start with 1 column */
+  
     grid-template-columns: repeat(1, 1fr);
     gap: 12px;
     max-width: 100%;
@@ -252,7 +251,7 @@ h1 {
     align-items: stretch;
 }
 
-/* Responsive breakpoints: 2 / 3 / 4 columns */
+
 @media (min-width: 600px) {
     .projects-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
 }
@@ -264,7 +263,7 @@ h1 {
 }
 
 
-/* Project tile (anchor) — fills grid cell */
+
 .project {
     display: block;
     position: relative;
@@ -277,7 +276,7 @@ h1 {
     height: 100%;
 }
 
-/* Responsive 16:9 image that covers its tile (no empty space) */
+
 .project-img {
     display: block;
     width: 100%;
@@ -287,19 +286,17 @@ h1 {
     will-change: transform, filter;
 }
 
-/* Stronger dark overlay that becomes visible on hover */
+
 .project::before {
     content: "";
     position: absolute;
     inset: 0;
-    /* base overlay (hidden) */
-    background: rgba(0,0,0,0.75); /* stronger darkness when visible */
+    background: rgba(0,0,0,0.75); 
     opacity: 0;
     transition: opacity 220ms ease;
     pointer-events: none;
 }
 
-/* Centered white label inside the image (never outside) */
 .project::after {
     content: attr(data-title);
     position: absolute;
@@ -313,7 +310,7 @@ h1 {
     font-size: clamp(14px, 2.4vw, 26px);
     letter-spacing: 0.2px;
     text-align: center;
-    padding: 0 12px; /* keep text inside image */
+    padding: 0 12px; 
     text-shadow: 0 2px 6px rgba(0,0,0,0.6);
     opacity: 0;
     transform: translateY(6px);
@@ -326,7 +323,7 @@ h1 {
 .project:hover::before { opacity: 1; }
 .project:hover::after { opacity: 1; transform: translateY(0); }
 
-/* Small screens: reduce gaps and font */
+
 @media (max-width: 480px) {
     .projects-grid { gap: 10px; padding: 6px; }
     .project::after { font-size: 14px; }
@@ -342,7 +339,7 @@ h1 {
     letter-spacing: 0.02em;
 }
 
-/* Individual character styling (optimized) */
+
 .pressure-text { perspective: 800px; }
 .pressure-text .char {
     display: inline-block;
@@ -354,10 +351,6 @@ h1 {
     -webkit-font-smoothing: antialiased;
 }
 
-/* We no longer change font-weight globally; weight is simulated with text-shadow */
-
-
-/* Liquid effect container */
 .pressure-text::before {
     content: '';
     position: absolute;
@@ -376,7 +369,7 @@ h1 {
     opacity: 1;
 }
 
-/* Small fixed social icons in the top-left */
+
 .message {
     top: 12px;
     left: 12px;

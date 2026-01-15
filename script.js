@@ -46,7 +46,7 @@ function initScrollFade() {
     });
 }
 
-// (Removed duplicate email modal handler - unified in initSubscribeModal)
+
 
 // Easter Eggs
 function initEasterEggs() {
@@ -96,14 +96,12 @@ function initEmailModal() {
     });
 }
 
-// Subscribe modal functionality
+
 function initSubscribeModal() {
-    // Removed as modal is no longer used
+ 
 }
 
-// Removed duplicate email modal handler. subscribeModal behavior consolidated in initSubscribeModal.
 
-// --- Utility: rectangular rainbow confetti burst ---
 function confettiBurst(x, y, count = 24, size = {w:10, h:14}){
     const colors = ['#ff3b3b','#ff8a00','#ffd400','#2ecc40','#00aaff','#8a2be2'];
     for(let i=0;i<count;i++){
@@ -130,16 +128,16 @@ function confettiBurst(x, y, count = 24, size = {w:10, h:14}){
     }
 }
 
-// theme toggle removed
 
-// --- Hearts for projects --- (REMOVED)
+
+
 function initHearts(){
-    // Hearts functionality removed
+
 }
 
-// --- 4th project spin --- (REMOVED)
+
 function initFourthSpin(){
-    // Spinning easter egg removed
+
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -169,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const chars = Array.from(text.querySelectorAll('.char'));
 
-        // Cache bounding centers to avoid repeated layout queries
+       
         function computeCenters() {
             return chars.map(ch => {
                 const r = ch.getBoundingClientRect();
@@ -177,13 +175,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     el: ch,
                     cx: r.left + r.width / 2,
                     cy: r.top + r.height / 2,
-                    current: 0 // current strength for smoothing
+                    current: 0 
                 };
             });
         }
 
         let centers = computeCenters();
-        // Recompute on resize (layout change)
+        
         let resizeTimeout;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
@@ -192,8 +190,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let mouseX = -9999, mouseY = -9999;
         let running = false;
-        const maxDistance = 150; // radius in px (bigger = smoother larger area)
-        const lerp = 0.3; // smoothing factor, higher = snappier, lower = smoother
+        const maxDistance = 150; 
+        const lerp = 0.3; 
 
         function rafLoop() {
             let anyActive = false;
@@ -203,38 +201,37 @@ document.addEventListener('DOMContentLoaded', () => {
                         const dist = Math.sqrt(dx * dx + dy * dy);
                         const target = Math.max(0, 1 - dist / maxDistance);
 
-                        // Smooth current toward target
+                       
                         c.current += (target - c.current) * lerp;
 
-                        // Determine transform values from current
+                        
                         const strength = c.current; // 0..1
                         if (strength > 0.001) anyActive = true;
 
-                        // Clamp dx/dy used for visual transforms so very large mouse coords
-                        // (e.g. when leaving) don't produce big intermediate transforms.
+                        
                         const clamp = maxDistance * 1.2;
                         const cdx = Math.max(-clamp, Math.min(clamp, dx));
                         const cdy = Math.max(-clamp, Math.min(clamp, dy));
 
                         const tx = cdx * strength * 0.5; // horizontal move
                         const ty = cdy * strength * 0.3; // vertical move
-                        const scale = 1 + strength * 1.0; // scale up to ~2.0
-                        const skew = (cdx / maxDistance) * strength * 20; // skew for liquid look
-                        const rotate = (cdx * cdy) * 0.0008 * strength * 40; // gentle rotation
+                        const scale = 1 + strength * 1.0; 
+                        const skew = (cdx / maxDistance) * strength * 20;
+                        const rotate = (cdx * cdy) * 0.0008 * strength * 40; 
 
-                        // Apply GPU accelerated transform in a single write
+                       
                         c.el.style.transform = `translate3d(${tx.toFixed(2)}px, ${ty.toFixed(2)}px, 0) rotate(${rotate.toFixed(2)}deg) skewX(${skew.toFixed(2)}deg) scale(${scale.toFixed(3)})`;
 
-                                // Use subtle text-shadow to simulate weight; reduce intensity to be less noticeable
+                              
                                 const shadowOpacity = Math.min(0.45, strength * 0.7);
                                 c.el.style.textShadow = shadowOpacity > 0 ? `0 ${Math.max(0.8, strength * 4)}px ${Math.max(1.5, strength * 6)}px rgba(0,0,0,${shadowOpacity})` : '';
-                                // Slightly bold hovered characters but much less noticeable than before
-                                const weight = Math.round(200 + strength * 250); // range ~200-450
+                              
+                                const weight = Math.round(200 + strength * 250); 
                                 c.el.style.fontWeight = weight;
                     });
 
             if (anyActive || (mouseX > -9000 && mouseY > -9000 && mouseX !== -9999)) {
-                // continue loop while active
+              
                 requestAnimationFrame(rafLoop);
             } else {
                 running = false;
@@ -251,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function onLeave() {
-            // move mouse far away so targets go to 0 and loop will finish
+         
             mouseX = -9999;
             mouseY = -9999;
             if (!running) {
