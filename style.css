@@ -1,0 +1,457 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,200;0,300;0,400;0,700;0,900;1,100;1,200;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+    background-color: #e6e6e5;
+    cursor: none; /* Hide default cursor */
+    padding: 0 20px; /* Add horizontal padding to prevent grid from filling the whole screen */
+}
+
+/* Hide native cursor everywhere and selectively restore text cursor for typing fields
+    Using a universal rule ensures no element falls through with its own cursor. */
+* { cursor: none !important; }
+
+/* Show text insertion cursor when focus is on input/textarea/select so caret is visible */
+input, textarea, select { cursor: text !important; }
+
+/* Custom cursor */
+.cursor {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    pointer-events: none; /* allow clicks through */
+    z-index: 2147483647; /* highest possible so it sits above everything */
+    background: url('/images/bat.png') no-repeat center center;
+    background-size: contain;
+    transition: all 0.18s ease;
+    transform: translate3d(0,0,0);
+}
+
+/* Cursor hover effect */
+.cursor.hover {
+    background-image: url('/images/character.png');
+    transform: scale(1.2);
+}
+
+/* Progress bar */
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 6px;
+    background: linear-gradient(to right, #000000, #2d2d2d, #424242, #666666, #a3a3a3, #c6c6c6, #dbdbdb, #ffffff);
+    z-index: 1000;
+    transition: width 0.1s;
+}
+
+.hover-instruction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: opacity 0.5s ease;
+    margin-top: -45px;
+}
+
+.hover-instruction img {
+    width: 24px;
+    height: 24px;
+    transform: rotate(-90deg); /* Makes arrow point left */
+}
+
+/* Theme variables */
+:root {
+    --bg: #e6e6e5;
+    --text: #000;
+    --muted: #666;
+    --card-bg: #fff;
+    --accent: #000;
+}
+
+body.dark {
+    --bg: #111214;
+    --text: #f2f2f2;
+    --muted: #bdbdbd;
+    --card-bg: #161718;
+    --accent: #fff;
+}
+
+/* theme toggle removed */
+
+/* Update common elements to use variables */
+body {
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* Project card and tilt/animations */
+.project { 
+    transition: transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s ease; 
+    transform-origin: center center;
+    will-change: transform;
+    position: relative; /* for heart button */
+}
+
+
+/* Confetti piece base */
+.confetti-piece {
+    position: fixed;
+    pointer-events: none;
+    width: 10px;
+    height: 18px;
+    border-radius: 2px;
+    will-change: transform, opacity;
+    z-index: 2147483647;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background: #e6e6e5;
+    padding: 30px;
+    border-radius: 12px;
+    position: relative;
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+}
+
+.modal h2 {
+    margin: 0 0 20px 0;
+    font-family: "Lato", sans-serif;
+    text-align: center;
+    font-size: 24px;
+}
+
+.close-button {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.2s;
+}
+
+.close-button:hover {
+    color: #000;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.modal input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.modal input[type="email"]:focus {
+    border-color: #000;
+}
+
+.modal button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: #000;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.modal button[type="submit"]:hover {
+    opacity: 0.8;
+}
+
+/* Busy/disabled state for submit button */
+.modal button[type="submit"][disabled] {
+    opacity: 0.7;
+    cursor: default;
+}
+
+.modal button[type="submit"] .spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255,255,255,0.9);
+    border-right-color: transparent;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+    animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.hover-instruction span {
+    font-family: "Roboto Condensed", sans-serif;
+    color: #666;
+    font-size: 14px;
+}
+
+/* Fade out only when hovering over the heading */
+h1:hover + .hover-instruction {
+    opacity: 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 50px;
+    font-family: "Lato", sans-serif;
+}
+
+/* Projects grid: responsive columns that fill the container and avoid empty space */
+.projects-grid {
+    display: grid;
+    /* mobile-first: start with 1 column */
+    grid-template-columns: repeat(1, 1fr);
+    gap: 12px;
+    max-width: 100%;
+    margin: 12px auto;
+    padding: 8px;
+    align-items: stretch;
+}
+
+/* Responsive breakpoints: 2 / 3 / 4 columns */
+@media (min-width: 600px) {
+    .projects-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+}
+@media (min-width: 900px) {
+    .projects-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+}
+@media (min-width: 1200px) {
+    .projects-grid { grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 100%; }
+}
+
+
+/* Project tile (anchor) — fills grid cell */
+.project {
+    display: block;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    will-change: transform, opacity;
+    transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms ease;
+    width: 100%;
+    height: 100%;
+}
+
+/* Responsive 16:9 image that covers its tile (no empty space) */
+.project-img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform 300ms ease, filter 300ms ease;
+    will-change: transform, filter;
+}
+
+/* Stronger dark overlay that becomes visible on hover */
+.project::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* base overlay (hidden) */
+    background: rgba(0,0,0,0.75); /* stronger darkness when visible */
+    opacity: 0;
+    transition: opacity 220ms ease;
+    pointer-events: none;
+}
+
+/* Centered white label inside the image (never outside) */
+.project::after {
+    content: attr(data-title);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-weight: 700;
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    font-size: clamp(14px, 2.4vw, 26px);
+    letter-spacing: 0.2px;
+    text-align: center;
+    padding: 0 12px; /* keep text inside image */
+    text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 220ms ease, transform 220ms ease;
+    pointer-events: none;
+}
+
+.project:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 18px 36px rgba(0,0,0,0.12); z-index: 2; }
+.project:hover .project-img { transform: scale(1.04); filter: brightness(0.7); }
+.project:hover::before { opacity: 1; }
+.project:hover::after { opacity: 1; transform: translateY(0); }
+
+/* Small screens: reduce gaps and font */
+@media (max-width: 480px) {
+    .projects-grid { gap: 10px; padding: 6px; }
+    .project::after { font-size: 14px; }
+}
+
+/* Text pressure effect */
+.pressure-text {
+    display: inline-block;
+    position: relative;
+    font-family: "-apple-system", "BlinkMacSystemFont", 'Segoe UI', Roboto, Arial, sans-serif;
+    cursor: default;
+    font-size: 2.5em;
+    letter-spacing: 0.02em;
+}
+
+/* Individual character styling (optimized) */
+.pressure-text { perspective: 800px; }
+.pressure-text .char {
+    display: inline-block;
+    font-weight: 200; /* thin by default */
+    transform-origin: center;
+    transition: transform 120ms linear, font-weight 120ms linear, text-shadow 120ms linear;
+    will-change: transform, text-shadow;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* We no longer change font-weight globally; weight is simulated with text-shadow */
+
+
+/* Liquid effect container */
+.pressure-text::before {
+    content: '';
+    position: absolute;
+    inset: -2px -4px;
+    background: transparent;
+    border-radius: 8px;
+    transform: scale(var(--pressure-bg-scale, 0.95));
+    opacity: var(--pressure-bg-opacity, 0);
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: -1;
+}
+
+.pressure-text[data-active="true"]::before {
+    background: var(--pressure-color, rgba(255, 255, 255, 0.1));
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Small fixed social icons in the top-left */
+.message {
+    top: 12px;
+    left: 12px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    z-index: 1200;
+    pointer-events: auto;
+}
+.message img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    border-radius: 6px;
+    transition: all 140ms ease;
+    cursor: pointer;
+}
+.message img:hover {
+    transform: scale(1.08);
+    filter: brightness(0.55) drop-shadow(0 0 5px rgba(0, 0, 0, 0.8));
+}
+
+.mail-button {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+}
+
+/* Button in top-right corner */
+.top-right-button {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    z-index: 1200;
+    pointer-events: auto;
+    float: right;
+}
+
+.top-right-button a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: var(--bg);
+    border: 2px solid var(--text);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--text);
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    transition: all 140ms ease;
+}
+
+.top-right-button a:hover {
+    transform: scale(1.08);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.top-right-button img {
+    width: 24px;
+    height: 24px;
+    filter: invert(var(--is-dark, 0)); /* Inverts icon color on dark mode */
+}
+
+@media (max-width: 520px) {
+    .message { top: 8px; left: 8px; gap: 6px; }
+    .message img { width: 36px; height: 36px; border-radius: 5px; }
+    .top-right-button { top: 8px; right: 8px; }
+    .top-right-button a { padding: 6px 10px; font-size: 14px; }
+    .top-right-button img { width: 20px; height: 20px; }
+}
+
+/* Ensure email icon is not tiny — prefer sizing by box (not transform) and target by alt text */
+.message img[alt="Email Link"] {
+    width: 44px;
+    height: 44px;
+}
