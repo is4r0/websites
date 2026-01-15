@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset=”UTF-8”>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name=”viewport” content="width=device-width, initial-scale=1.0">
+
+    <title>File Transfer</title>
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+ <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="file-transfer">
+    <div class="container">
+        <div class="title-section">
+            <h2 class="title">Transfer Files</h2>
+        </div>
+        <form action="" class="form">
+            <div class="input-group">
+                <label class="label-title">Send file to this email:</label>
+                <input type="email" placeholder="abc123@example.com" autocomplete="off">
+                <span class="icon">&#9993;</span>
+            </div>
+
+            <div id="filewrapper">
+             <!--   <div class="showfilebox">
+                    <div class="left">
+                        <span class="filetype">Pdf</span>
+                        <h3>isar-is-better.pdf</h3>
+                    </div>
+                    <div class="right">
+                        <span>&#215</span>
+                    </div>
+                </div> -->
+            </div>
+
+            <div class="upload-file">
+                <input type="file" class="file-input" hidden multiple>
+                <label for="file">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p><span>Browse file to upload</span></p>
+                </label>
+            </div>
+
+            <div class="input-group">
+                <button class="submit-btn" type="submit">Send</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+ <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Aim Trainer</title>
+	<link rel="icon" href="OIP-removebg-preview.png" type="image/png">
+
+<style>
+  body
+{
+	overflow:hidden;
+	background-color:rgb(17,72,108);
+}	
+
+h1
+{
+font-family: "Lucida Console";
+font-size: 2em;
+text-align:center;
+color:white;
+}
+
+h2
+{
+font-family: "Lucida Console";
+font-size: 1em;
+padding-left:50px;
+color:white;
+}
+#container 
+{
+  bottom:50px;
+  left:5%;
+  width: 90%;
+  height: 60%;
+  position: absolute;
+  background-color: rgb(12,93,145);
+  cursor:crosshair;
+}
+
+.inner
+{
+	position:absolute;
+	width:20px;
+	height:20px;
+	background-color:rgb(17,72,108);
+	border-radius: 50%;
+}
+
+.outer
+{
+	
+	position:absolute;
+	width:30px;
+	height:30px;
+	background-color:white;
+	border-radius: 50%;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	
+}
+#resetBtn
+{
+	position:absolute;
+	bottom:20px;
+	left:50%;
+	background-color: rgb(12,93,145);
+	color:white;
+	border-radius:2px;
+	z-index:999;
+}
+
+.targetAnim
+{	
+	animation-name: explosion;
+	animation-duration: 1s;
+	animation-fill-mode:forwards;
+}
+
+.targetAnim2
+{
+ animation-name:explosion2;
+ animation-duration:0.5s;
+ animation-delay:0.2s;
+ animation-fill-mode:forwards;
+}
+
+@keyframes explosion
+{
+	from
+	{ 
+		width:	30px;
+		height: 30px;
+		background-color:rgba(255,255,255,1);
+	}
+
+	to
+	{
+		transform: translate(-20px,-20px);
+		width:70px;
+		height: 70px;
+		background-color:rgba(255,255,255,0);
+	}
+}
+@keyframes explosion2
+{
+	from 
+	{ 
+		width:	20px;
+		height: 20px;
+		background-color:rgb(17,72,108);
+	}
+	to
+	{
+		//transform: translate(-10px,-10px);
+		width:40px;
+		height: 40px;
+		background-color:rgb(12,93,145)
+	}
+}
+</style>
+  
+ </head>
+<body>
+<div id ="header">
+
+<h1>Aim Trainer</h1>
+<h2 id="hits">Hits: <placeholder>0</placeholder> </h2>
+<h2 id="misses">Misses: <placeholder>0</placeholder> </h2>
+<h2 id="time">Time: <placeholder>0</placeholder></h2>
+  <h2 id="accuracy">Accuracy: <placeholder>0%</placeholder> </h2>
+
+</div>
+<div id="container">
+</div>
+<br>
+<button id="resetBtn" onclick="resetGame()">Reset Game</button>
+
+<script type="text/javascript" src="game.js"></script>
+</body>
+</html>

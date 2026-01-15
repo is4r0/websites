@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); 
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.file-transfer {
+    background-color: #625BFE;
+    width: 100%;
+    min-height: 100vh;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.file-transfer .container {
+     min-width: 500px;
+     width: 100%;
+     background: #fff;
+     padding: 30px;
+     border-radius: 16px;
+     box-shadow: #00000014 0px 4px 12px;
+}
+
+.file-transfer .title-section {
+    margin-bottom: 30px;
+}
+
+.file-transfer .title-section .title {
+    color: #6676f7;
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.file-transfer .input-group {
+    position: relative;
+}
+
+.file-transfer .input-group .label-title {
+    color: #38475a;
+    margin-bottom: 11px;
+    font-size: 14px;
+    font-weight: 500;
+    display: block;
+}
+
+.file-transfer .input-group input {
+    color: #38475a;
+    background: #3848a51a;
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+    font-weight: 300;
+    padding: 9px 18px 9px 52px;
+    border: none;
+    outline: none;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #3648a5;
+}
+
+.file-transfer .input-group input::placeholder {
+    color: #38475a;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.file-transfer .input-group .icon {
+    position: absolute;
+    left: 13px;
+    top: calc(50% - 11px);
+    color: #38475a;
+    font-size: 23px;
+    text-align: center;
+}
+
+.file-transfer .showfilebox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 0px 0px 1px #0000000d, inset 0px 0px 0px 1px #d1d5db;
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+}
+
+.file-transfer .showfilebox.hide {
+    display: none;
+    transition: all 0.5s;
+}
+
+.file-transfer .showfilebox .left {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.file-transfer .showfilebox .left .filetype {
+    background: #5a90d442;
+    color: #5b8fd3;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 3px;
+}
+
+.file-transfer .showfilebox .left h3 {
+    font-size: 15px;
+    font-weight: 500;
+    color: #292f42;
+}
+
+.file-transfer .showfilebox .right span {
+    display: inline-block;
+    color: #608fd3;
+    line-height: 30px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 30px;
+    border-radius: 10px;
+}
+
+.file-transfer .showfilebox .right span:hover {
+    color: #7771f7;
+}
+
+.file-transfer .upload-file label {
+    height: 167px;
+    display: flex;
+    cursor: pointer;
+    margin: 30px 0;
+    align-items: center;
+    flex-direction: column;
+    border: 2px dashed #625BFE;
+    border-radius: 5px;
+    justify-content: center;
+}
+
+.file-transfer .upload-file {
+    font-size: 50px;
+    color: #625BFE;
+}
+
+.file-transfer .upload-file p {
+    margin-top: 15px;
+    font-size: 16px;
+    text-align: center;
+    color: #625BFE;
+}
+
+.submit-btn {
+     width: 100%;
+     background: #625BFE;
+     border: 1px solid transparent;
+     border-radius: 8px;
+     font-size: 16px;
+     color: #fff;
+     padding: 13px 24px;
+     font-weight: 500;
+     text-align: center;
+     cursor: pointer;
+     transition: all 0.4;
+}
+
+.submit-btn:hover {
+    background: #7771f7;
+    border: 1px solid #7771f7;
+}

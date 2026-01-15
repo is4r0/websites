@@ -1,0 +1,110 @@
+body {
+  background-color: darkgrey;
+  margin: 0px;
+}
+
+a {
+  color: black;
+}
+
+ul {
+  font-family: "Jost";
+}
+
+ol {
+  font-family: "Jost";
+}
+
+hr {
+  color: black;
+  background-color: black;
+  height: 1px
+}
+
+h1 {
+  font-family: sans-serif;
+  text-shadow: black 2px 2px 2px;
+  color: white;
+  font-size: 70px;
+  text-align: center;
+}
+
+.links {
+  text-decoration: none;
+}
+
+p {
+  font-family: "Jost";
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 26px;
+  font-family: serif;
+}
+
+h4 {
+  font-size: 20px;
+  font-family: sans-serif;
+}
+
+figure {
+  text-align: center;
+  vertical-align: top;
+  margin: 20px;
+  display: inline-block;
+  float: right;
+}
+
+figure img {
+  max-width: 100%;
+  width: 450px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+figure figcaption {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+
+img {
+  width: 420px;
+  height: 300px;
+  border-radius: 80px;
+  float: right;
+}
+
+.navbar ul{
+  list-style-type: none;
+  top: 0;
+  background-color: hsl(0, 0%, 25%);
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+  text-align: center;
+  justify-content: center;
+  font-family: "BBH Sans Hegarty"
+}
+
+.navbar a{
+  color: white;
+  padding: 15px;
+  display: block;
+  text-align: center;
+}
+
+.navbar a:hover{
+  background-color: hsl(0, 0%, 15%);
+}
+
+.navbar li{
+  float: left;
+  text-align: center;
+  justify-content: center
+}
