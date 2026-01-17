@@ -85,7 +85,7 @@ websites/
 
 ## 🤝 Contributing
 
-We welcome contributions to enhance this collection of web projects! Please consider the following guidelines:
+I welcome contributions to enhance this collection of web projects! Please consider the following guidelines:
 
 1.  Fork the repository.
 2.  Create a new branch for your feature or bug fix (`git checkout -b feature/AmazingFeature`).
