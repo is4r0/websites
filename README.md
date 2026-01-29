@@ -9,7 +9,7 @@
 -   ⚡ **Lightweight and Fast**: Pure HTML, CSS, and JavaScript ensures quick loading times and minimal dependencies.
 
 ## 🖥️ Screenshots
-
+ 
 <img width="1857" height="926" alt="image" src="https://github.com/user-attachments/assets/615269c8-eb30-4761-91ab-671a653ad806" />
 <img width="1889" height="926" alt="image" src="https://github.com/user-attachments/assets/bdcdd9f2-265a-499f-9fb0-e4098f1b481b" />
 
