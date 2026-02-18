@@ -31,7 +31,7 @@
 
 To get a local copy up and running, follow these simple steps.
 
-### Prerequisites
+### Prerequisites 
 -   A modern web browser (Chrome, Firefox, Safari, Edge). 
 -   Node.js (LTS version recommended) and npm (Node Package Manager) for running local development server scripts, if defined in `package.json`.
 
