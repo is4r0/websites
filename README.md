@@ -45,7 +45,7 @@ To get a local copy up and running, follow these simple steps.
 
 2.  **Install dependencies** (if any are listed in `package.json` for development tools)
     ```bash
-    npm install
+    npm install  
     ```
 
 3.  **Start development server**
