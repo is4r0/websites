@@ -4,7 +4,7 @@
 
 -   🎯 **Interactive User Interface**: Engaging elements powered by JavaScript for a dynamic user experience.
 -   📱 **Responsive Design**: Adapts seamlessly across various devices and screen sizes (desktops, tablets, mobile phones).
--   🎨 **Clean & Modern Styling**: Aesthetically pleasing design implemented with pure CSS.
+-   🎨 **Clean & Modern Styling**: Aesthetically pleasing design implemented with pure CSS. 
 -   🛣️ **Custom 404 Error Page**: Provides a branded and user-friendly experience for missing pages.
 -   ⚡ **Lightweight and Fast**: Pure HTML, CSS, and JavaScript ensures quick loading times and minimal dependencies. 
 
