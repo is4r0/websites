@@ -1,5 +1,3 @@
-## ✏️ [Live Demo](https://isarwebsites.netlify.app/)  
-
 ## ✨ Features
 
 -   🎯 **Interactive User Interface**: Engaging elements powered by JavaScript for a dynamic user experience.
